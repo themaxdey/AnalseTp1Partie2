@@ -1,0 +1,35 @@
+1. En-tête du programme
+
+Le nom des programmateurs ainsi qu'une brève description de l'utilité du programme.
+
+//*********************************************************************
+//
+// Programmeur : xxxxxxxx
+// Date : jj-mm-aaaa
+// Fichier : xxxxxxxx.java
+//
+// (Description du programme)
+//
+//********************************************************************* 
+
+
+2. Nom des variables
+
+Doivent être en lettres minuscules, sauf s'ils contiennent plusieurs mots. Première lettre de chaque mot de l'identificateur doit être une majuscule
+sauf la première lettre du premier mot.
+
+Exemple : tauxHoraire ou nbJoursAbsence
+
+
+3. Nom des identificateurs
+
+Doivent être en français, omettre toujours les accents.
+
+
+4. Déclarations
+
+- Doivent constituer les premières lignes de code d'une méthode.
+
+- Suit la déclaration des constantes.
+
+-initialiser sa valeur à 0 pour les types numériques et à la chaîne vide ("") pour les chaînes de caractères.
