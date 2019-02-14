@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class mainTp1Partie2 {
 
-	public static void main(String[] args) {
+	public static void main( String[] args ) {
 		// TODO Auto-generated method stub
 		ArrayList<Clients> listClients = new ArrayList<Clients>();
 		ArrayList<Plats> listPlats = new ArrayList<Plats>();
@@ -27,36 +27,38 @@ public class mainTp1Partie2 {
 		try {
 			String ancienneLigne = null;
 			String ligneActuelle = null;
-			ficLecture = new BufferedReader(new FileReader(nomFicCommande));
+			ficLecture = new BufferedReader( new FileReader( nomFicCommande ) );
 
-			while ((ligneActuelle = ficLecture.readLine()) != null) {
+			while ( ( ligneActuelle = ficLecture.readLine() ) != null ) {
 
-				if (ligneActuelle.endsWith(":")) {
+				if ( ligneActuelle.endsWith( ":" ) ) {
 
-					ancienneLigne = ligneActuelle.replace(" :", "");
+					ancienneLigne = ligneActuelle.replace( " :", "" );
 
-				} else if (ancienneLigne.equals("Clients")) {
+				} else if ( ancienneLigne.equals( "Clients" ) ) {
 
-					Clients client = new Clients(ligneActuelle);
-					listClients.add(client);
+					Clients client = new Clients( ligneActuelle );
+					listClients.add( client );
 
-				} else if (ancienneLigne.equals("Plats")) {
+				} else if ( ancienneLigne.equals( "Plats" ) ) {
 
-					Plats plat = new Plats(ligneActuelle.split(" ")[0], Double.parseDouble(ligneActuelle.split(" ")[1]));
-					listPlats.add(plat);
+					Plats plat = new Plats( ligneActuelle.split( " " )[0],
+							Double.parseDouble( ligneActuelle.split( " " )[1] ) );
+					listPlats.add( plat );
 
-				} else if (ancienneLigne.equals("Commandes")) {
+				} else if ( ancienneLigne.equals( "Commandes" ) ) {
 
-					for (Clients client : listClients) {
+					for ( Clients client : listClients ) {
 
-						if (client.getNom().equals(ligneActuelle.split(" ")[0])) {
+						if ( client.getNom().equals( ligneActuelle.split( " " )[0] ) ) {
 
-							for (Plats plat : listPlats) {
+							for ( Plats plat : listPlats ) {
 
-								if (plat.Equals(ligneActuelle.split(" ")[0])) {
+								if ( plat.Equals( ligneActuelle.split( " " )[0] ) ) {
 
-									Commande commande = new Commande(client, plat, Integer.parseInt(ligneActuelle.split(" ")[2]));
-									listCommandes.add(commande);
+									Commande commande = new Commande( client, plat,
+											Integer.parseInt( ligneActuelle.split( " " )[2] ) );
+									listCommandes.add( commande );
 									break;
 								}
 							}
@@ -65,52 +67,52 @@ public class mainTp1Partie2 {
 				}
 			}
 
-			System.out.println(" ");
-		} catch (Exception e) {
+			System.out.println( " " );
+		} catch ( Exception e ) {
 
 			try {
-				BufferedWriter ficEcriture = new BufferedWriter(new FileWriter(nomFicFacture));
-				ficEcriture.write("Erreur de lecture. Assurez-vous que le format est correct.");
-				System.out.println("Erreur de lecture. Assurez-vous que le format est correct.");
+				BufferedWriter ficEcriture = new BufferedWriter( new FileWriter( nomFicFacture ) );
+				ficEcriture.write( "Erreur de lecture. Assurez-vous que le format est correct." );
+				System.out.println( "Erreur de lecture. Assurez-vous que le format est correct." );
 				ficEcriture.close();
-				System.exit(0);
-			} catch (Exception e2) {
+				System.exit( 0 );
+			} catch ( Exception e2 ) {
 				// TODO: handle exception
 
 			}
 
-			BufferedWriter ficEcriture = null;
+		}
 
-			try {
-				ficEcriture = new BufferedWriter(new FileWriter(nomFicFacture));
-				ficEcriture.write("Bienvenue chez Barette !\r\n" + "Factures :");
-				System.out.println("Bienvenue chez Barette !\r\n" + "Factures :");
+		BufferedWriter ficEcriture = null;
 
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
+		try {
+			ficEcriture = new BufferedWriter( new FileWriter( nomFicFacture ) );
+			ficEcriture.write( "Bienvenue chez Barette !\r\n" + "Factures :" );
+			System.out.println( "Bienvenue chez Barette !\r\n" + "Factures :" );
 
-			try {
-				for (Clients clientCourrant : listClients) {
-					ficEcriture.write(clientCourrant.getNom() + ": ");
-					System.out.println(clientCourrant.getNom() + ": ");
+		} catch ( Exception e2 ) {
+			// TODO: handle exception
+		}
 
-					for (Commande commande : listCommandes) {
-						if (commande.Contains(clientCourrant)) {
-							ficEcriture.write(commande.getFacture() + "$\n");
-							System.out.println(commande.getFacture() + "$\n");
-							break;
-						} else if (commande == listCommandes.get(listCommandes.size() - 1)) {
-							ficEcriture.write("0.00$\n");
-							System.out.println("0.00$\n");
-						}
+		try {
+			for ( Clients clientCourrant : listClients ) {
+				ficEcriture.write( clientCourrant.getNom() + ": " );
+				System.out.println( clientCourrant.getNom() + ": " );
+
+				for ( Commande commande : listCommandes ) {
+					if ( commande.Contains( clientCourrant ) ) {
+						ficEcriture.write( commande.getFacture() + "$\n" );
+						System.out.println( commande.getFacture() + "$\n" );
+						break;
+					} else if ( commande == listCommandes.get( listCommandes.size() - 1 ) ) {
+						ficEcriture.write( "0.00$\n" );
+						System.out.println( "0.00$\n" );
 					}
 				}
-				ficEcriture.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
 			}
-
+			ficEcriture.close();
+		} catch ( Exception e2 ) {
+			// TODO: handle exception
 		}
 	}
 
