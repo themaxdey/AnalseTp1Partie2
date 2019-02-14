@@ -31,11 +31,6 @@ public class mainTp1Partie2 {
 
 			while ((ligneActuelle = ficLecture.readLine()) != null) {
 
-				String nomPlatFicLecture = ligneActuelle.split(" ")[0];
-				Double coutFicLecture = Double.parseDouble(ligneActuelle.split(" ")[1]);
-				int qteFicLecture = Integer.parseInt(ligneActuelle.split(" ")[2]);
-				String nomClientFicLecture = ligneActuelle.split(" ")[0];
-
 				if (ligneActuelle.endsWith(":")) {
 
 					ancienneLigne = ligneActuelle.replace(" :", "");
@@ -47,20 +42,20 @@ public class mainTp1Partie2 {
 
 				} else if (ancienneLigne.equals("Plats")) {
 
-					Plats plat = new Plats(nomPlatFicLecture, coutFicLecture);
+					Plats plat = new Plats(ligneActuelle.split(" ")[0], Double.parseDouble(ligneActuelle.split(" ")[1]));
 					listPlats.add(plat);
 
 				} else if (ancienneLigne.equals("Commandes")) {
 
 					for (Clients client : listClients) {
 
-						if (client.getNom().equals(nomClientFicLecture)) {
+						if (client.getNom().equals(ligneActuelle.split(" ")[0])) {
 
 							for (Plats plat : listPlats) {
 
-								if (plat.Equals(nomPlatFicLecture)) {
+								if (plat.Equals(ligneActuelle.split(" ")[0])) {
 
-									Commande commande = new Commande(client, plat, qteFicLecture);
+									Commande commande = new Commande(client, plat, Integer.parseInt(ligneActuelle.split(" ")[2]));
 									listCommandes.add(commande);
 									break;
 								}
