@@ -54,7 +54,7 @@ public class mainTp1Partie2 {
 
 							for ( Plats plat : listPlats ) {
 
-								if ( plat.Equals( ligneActuelle.split( " " )[0] ) ) {
+								if ( plat.Equals( ligneActuelle.split( " " )[1] ) ) {
 
 									Commande commande = new Commande( client, plat,
 											Integer.parseInt( ligneActuelle.split( " " )[2] ) );
@@ -87,8 +87,8 @@ public class mainTp1Partie2 {
 
 		try {
 			ficEcriture = new BufferedWriter( new FileWriter( nomFicFacture ) );
-			ficEcriture.write( "Bienvenue chez Barette !\r\n" + "Factures :" );
-			System.out.println( "Bienvenue chez Barette !\r\n" + "Factures :" );
+			ficEcriture.write( "Bienvenue chez Barette !\r\n" + "Factures\n" );
+			System.out.println( "Bienvenue chez Barette !\r\n" + "Factures\n" );
 
 		} catch ( Exception e2 ) {
 			// TODO: handle exception
