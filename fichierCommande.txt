@@ -1,0 +1,16 @@
+Clients :
+Antoine
+Sophie
+Gilles
+Robert
+Plats :
+Hamburger 6.76
+Frites 2.10
+Boisson 3
+Commandes :
+Antoine Hamburger 5
+Antoine Boisson 1
+Sohpie Frites 2
+Gilles Hamburger 1
+Gilles Frites 1
+Fin
